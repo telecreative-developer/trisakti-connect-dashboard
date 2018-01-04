@@ -327,10 +327,9 @@ class DashboardController extends CI_Controller {
 
 	public function backcareers()
 	{
-		$career['careers']    = $this->ModelDashboard->Load_Career()->result();
-		
+		$results['careers']    = $this->ModelDashboard->Load_Career()->result();
 		$this->load->view('back-end/header/datatables_header');
-		$this->load->view('back-end/career',$career);
+		$this->load->view('back-end/career',$results);
 		$this->load->view('back-end/footer/datatables_footer');
 
 	}

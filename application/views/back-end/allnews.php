@@ -150,7 +150,7 @@
                                         
                                             if($status == 'Agree'){
                                             
-                                            ?><button class="btn btn-success">Agree</button>
+                                            ?><button class="btn btn-success">Agreed</button>
 
                                             <?php
                                             }elseif($status == 'Pending'){

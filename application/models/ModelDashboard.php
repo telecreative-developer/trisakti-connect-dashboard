@@ -388,23 +388,23 @@ Class ModelDashboard extends CI_Model{
 
 	public function Load_Candidate(){
 		$this->db->select('*');
-		$this->db->from('polls_choice');
-		$this->db->join('polls','polls_choice.id_poll = polls.id_poll','left');
+		$this->db->from('pollschoices');
+		$this->db->join('polls','pollschoices.id_poll = polls.id_poll','left');
 		$this->db->order_by('idpoll_choice','desc');
 		$db = $this->db->get();
 		return $db;
 	}
 
 	public function upload_candidate($polls_choice){
-		$this->db->insert('polls_choice',$polls_choice);
+		$this->db->insert('pollschoices',$polls_choice);
 		return $db;
 	}
 
 	public function editpolls_id($id){
 		$this->db->select('*');
-		$this->db->from('polls_choice');
+		$this->db->from('pollschoices');
 		$this->db->where('idpoll_choice',$id);
-		$this->db->join('polls','polls.id_poll = polls_choice.id_poll');
+		$this->db->join('polls','polls.id_poll = pollschoices.id_poll');
     	$query =$this->db->get();
     	return $query;
 	}
@@ -417,12 +417,12 @@ Class ModelDashboard extends CI_Model{
 	public function deleteCandidate($id)
 	{
 		$this->db->where('idpoll_choice',$id);
-		$query = $this->db->get('polls_choice');
+		$query = $this->db->get('pollschoices');
 		$row = $query->row();
 		$x = substr($row->avatar,46);
 
 
-	    $this->db->delete('polls_choice',array('idpoll_choice' => $id));
+	    $this->db->delete('pollschoices',array('idpoll_choice' => $id));
 	    $path ='/opt/lampp/htdocs/trisakti_connect/images/'.$x;
 	    var_dump($path);
 	    if($this->db->affected_rows() >= 1){
@@ -435,7 +435,7 @@ Class ModelDashboard extends CI_Model{
 	public function replaceCandidate($id)
 	{
 		$this->db->where('idpoll_choice',$id);
-		$query = $this->db->get('polls_choice');
+		$query = $this->db->get('pollschoices');
 		$row = $query->row();
 		$x = substr($row->avatar,46);
 
@@ -457,8 +457,8 @@ Class ModelDashboard extends CI_Model{
 		$this->db->select('*');
 		$this->db->from('polls');
 		$this->db->where('polls.id_poll', $id);
-		$this->db->join('polls_choice','polls.id_poll = polls_choice.id_poll');
-		$this->db->order_by('polls_choice.idpoll_choice','asc');
+		$this->db->join('pollschoices','polls.id_poll = pollschoices.id_poll');
+		$this->db->order_by('pollschoices.idpoll_choice','asc');
 		$db = $this->db->get();
 		return $db;
 	}
@@ -466,8 +466,8 @@ Class ModelDashboard extends CI_Model{
 	public function voted(){
 		$this->db->select('*');
 		$this->db->from('polls');
-		$this->db->join('polls_choice','polls.id_poll = polls_choice.id_poll');
-		$this->db->order_by('polls_choice.idpoll_choice','asc');
+		$this->db->join('pollschoices','polls.id_poll = pollschoices.id_poll');
+		$this->db->order_by('pollschoices.idpoll_choice','asc');
 		$db = $this->db->get();
 		return $db;
 	}
@@ -477,7 +477,7 @@ Class ModelDashboard extends CI_Model{
 	//Votenow
 
 	public function insert_answers($polls){
-		$this->db->insert('polls_answers',$polls);
+		$this->db->insert('pollsanswers',$polls);
 	}
 
 	//End List

@@ -260,7 +260,7 @@ class Trisakti extends CI_Controller {
 			$id = $this->uri->segment(2);
 		
 			$cat['categories']    = $this->ModelDashboard->Load_Category()->result();
-			$cat['list_vote']     = $this->ModelDashboard->polls_byid($id,'polls_choice')->result();
+			$cat['list_vote']     = $this->ModelDashboard->polls_byid($id,'pollschoices')->result();
 
 			$this->load->view('front-end/header/header_vote');
 			$this->load->view('front-end/list_vote',$cat);

@@ -20,7 +20,7 @@
 		      	<div class="col-lg-8">
 		      		<div id="box-voted">
 		      		<h2><center><?php echo $title;?></center></h2><br>
-		      		<img src="<?php echo base_url();?>images/<?php echo $pic;?>" width="100%;">
+		      		<img src="<?php echo base_url();?><?php echo $pic;?>" width="100%;">
 		      		<p span style="font-size: 12px;"><?php echo $content;?></p>
 
 		      		<div class="row">

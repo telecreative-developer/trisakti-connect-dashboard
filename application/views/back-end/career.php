@@ -114,7 +114,7 @@
                             <tbody>
                                 <?php 
                                     $no = 1;
-                                    foreach ($results as $career) {
+                                    foreach ($careers as $career) {
                                       
                                 ?>
                                 <tr>
