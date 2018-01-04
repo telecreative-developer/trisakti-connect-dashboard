@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -105,7 +105,7 @@
 						<div class="slider-full-width-img-conent">
 							<div id="slider_two_img_part" class="owl-carousel owl-theme">
 								<div class="item">
-									<img src="https://lh3.googleusercontent.com/dB4yJskvaasPjD3mOIBVaHL7WKxi1CLV2eDsZQvV1E5Sx3K9f0r9ViONSsSzPE3eVHuD9s98WMWgPCCS0AKr=w2880-h1606-rw" alt="img" class="img-responsive">
+									<img src="<?php echo base_url();?>/images/background.png" class="img-responsive">
 								</div>
 							</div>
 						</div>
