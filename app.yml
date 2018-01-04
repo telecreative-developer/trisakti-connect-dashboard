@@ -1,0 +1,27 @@
+runtime: php55
+api_version: 1
+
+handlers:
+  - url : /
+  script: index.php
+
+  - url : /index\.php
+  script: index.php
+
+  - url : /application
+  script: application
+
+  -url : /system
+  static_dir: system
+
+  -url : /assets_front
+  static_dir: assets_front
+
+  -url : /images
+  static_dir: images
+
+  -url : /assets
+  static_dir: assets
+  
+  
+  
