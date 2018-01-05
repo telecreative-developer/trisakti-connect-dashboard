@@ -334,9 +334,6 @@ class Trisakti extends CI_Controller {
 	        $careers["results"] = $this->ModelDashboard->careers($config["per_page"], $page);
 			$careers["links"] = $this->pagination->create_links();
 
-			$asd = $careers["results"];
-			var_dump($asd);
-
 			$this->load->view('front-end/header/header_careers');
 			$this->load->view('front-end/careers',$careers);
 			$this->load->view('front-end/footer/footer');

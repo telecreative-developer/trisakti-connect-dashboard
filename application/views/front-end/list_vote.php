@@ -55,7 +55,7 @@
 													$candidate = $list_candidate->candidate;
 													$x = $list_candidate->id_polls_choice;
 
-													$sql = $this->db->query("SELECT COUNT(*) as total FROM pollsanswers,polls_choice WHERE pollsanswers.id_polls = '$id' AND polls_choice.id_polls_choice = '$x' AND pollsanswers.id_polls_choice = '$x' GROUP BY pollsanswers.id_polls_choice = '$x' ");
+													$sql = $this->db->query("SELECT COUNT(*) as total FROM pollsanswers,pollschoice WHERE pollsanswers.id_polls = '$id' AND pollschoice.idpoll_choice = '$x' AND pollsanswers.idpoll_choice = '$x' GROUP BY pollsanswers.idpoll_choice = '$x' ");
 													$row = $sql->row();
 													$voted = $row->total;
 												?>
@@ -146,7 +146,7 @@ Highcharts.chart('calculationvoting', {
 			$candidate = $list_candidate->candidate;
 			$x = $list->id_polls_choice;
 
-			$sql = $this->db->query("SELECT COUNT(*) as total FROM pollsanswers,polls_choice WHERE pollsanswers.id_polls = '$id' AND polls_choice.id_polls_choice = '$x' AND pollsanswers.id_polls_choice = '$x' GROUP BY pollsanswers.id_polls_choice = '$x' ");
+			$sql = $this->db->query("SELECT COUNT(*) as total FROM pollsanswers,pollschoices WHERE pollsanswers.id_poll = '$id' AND pollschoices.idpoll_choice = '$x' AND pollsanswers.idpoll_choice = '$x' GROUP BY pollsanswers.idpoll_choice = '$x' ");
 			$row = $sql->row();
 			$voted = $row->total;
 
