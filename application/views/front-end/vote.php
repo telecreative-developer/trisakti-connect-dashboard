@@ -1,3 +1,9 @@
+<?php 
+
+error_reporting(0)
+
+?>
+
 <div class="main-wrapper">
 		<div class="padding-80">
 			<div class="container">

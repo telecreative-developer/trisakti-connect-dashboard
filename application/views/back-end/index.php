@@ -1,3 +1,44 @@
+<div class="loader-bg"></div>
+<div class="loader">
+    <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+            <div class="circle"></div>
+            </div><div class="circle-clipper right">
+            <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-teal lighten-1">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+            <div class="circle"></div>
+            </div><div class="circle-clipper right">
+            <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+            <div class="circle"></div>
+            </div><div class="circle-clipper right">
+            <div class="circle"></div>
+            </div>
+        </div>
+        <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+                <div class="circle"></div>
+            </div><div class="gap-patch">
+            <div class="circle"></div>
+            </div><div class="circle-clipper right">
+            <div class="circle"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="mn-content fixed-sidebar">
     <header class="mn-header navbar-fixed">
@@ -20,9 +61,6 @@
     <aside id="slide-out" class="side-nav white fixed">
         <div class="side-nav-wrapper">
             <div class="sidebar-profile">
-                <div class="sidebar-profile-image">
-                    <img src="assets/images/profile-image.png" class="circle" alt="">
-                </div>
                 <div class="sidebar-profile-info">
                     <a href="javascript:void(0);" class="account-settings-link">
                         <?php 

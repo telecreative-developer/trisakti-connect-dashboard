@@ -106,7 +106,7 @@
 							<p><i class="fa fa-tags"></i> OVERVIEWS </p>
 						</div>
 						<div class="overviews">
-							<p class="title_over"> Job Functional : <span style="color:#00569b;"><?php echo $job->job_functional;?> </span></p>
+							<p class="title_over"> Job Functional : <span style="color:#00569b;"><?php echo $job->job_function;?> </span></p>
 							<p class="overviews"> 
 								<?php echo $job->overview;?>
 							</p>

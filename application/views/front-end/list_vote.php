@@ -20,7 +20,7 @@
 		      	<div class="col-lg-8">
 		      		<div id="box-voted">
 		      		<h2><center><?php echo $title;?></center></h2><br>
-		      		<img src="<?php echo base_url();?><?php echo $pic;?>" width="100%;">
+		      		<img src="<?php echo $pic;?>" width="100%;">
 		      		<p span style="font-size: 12px;"><?php echo $content;?></p>
 
 		      		<div class="row">
@@ -53,9 +53,9 @@
 												<?php 
 													$id = $this->uri->segment(2);
 													$candidate = $list_candidate->candidate;
-													$x = $list_candidate->id_polls_choice;
+													$x = $list_candidate->idpoll_choice;
 
-													$sql = $this->db->query("SELECT COUNT(*) as total FROM pollsanswers,pollschoice WHERE pollsanswers.id_polls = '$id' AND pollschoice.idpoll_choice = '$x' AND pollsanswers.idpoll_choice = '$x' GROUP BY pollsanswers.idpoll_choice = '$x' ");
+													$sql = $this->db->query("SELECT COUNT(*) as total FROM pollsanswers,pollschoices WHERE pollsanswers.id_poll = '$id' AND pollschoices.idpoll_choice = '$x' AND pollsanswers.idpoll_choice = '$x' GROUP BY pollsanswers.idpoll_choice = '$x' ");
 													$row = $sql->row();
 													$voted = $row->total;
 												?>
@@ -144,7 +144,7 @@ Highcharts.chart('calculationvoting', {
         <?php  foreach($list_vote as $list){ 
         	$id = $this->uri->segment(2);
 			$candidate = $list_candidate->candidate;
-			$x = $list->id_polls_choice;
+			$x = $list->idpoll_choice;
 
 			$sql = $this->db->query("SELECT COUNT(*) as total FROM pollsanswers,pollschoices WHERE pollsanswers.id_poll = '$id' AND pollschoices.idpoll_choice = '$x' AND pollsanswers.idpoll_choice = '$x' GROUP BY pollsanswers.idpoll_choice = '$x' ");
 			$row = $sql->row();

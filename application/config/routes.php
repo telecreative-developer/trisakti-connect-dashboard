@@ -113,6 +113,12 @@ $route['answers'] = 'DashboardController/answers';
 $route['reports'] = 'DashboardController/reports';
 $route['reply_reports/:any'] = 'DashboardController/sendreports';
 
+$route['addusers'] = 'DashboardController/addusers';
+$route['insertusers'] = 'DashboardController/insertusers';
+$route['deleteuser/:any'] = 'DashboardController/deleteuser';
+$route['edituser/:any'] = 'DashboardController/edituser';
+$route['updateuser'] = 'DashboardController/updateuser';
+
 // End Backend
 
 

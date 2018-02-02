@@ -1,6 +1,8 @@
-<?php 
-    error_reporting(0);
-?>
+<style type="text/css">
+#form-padding{
+    padding: 10px;
+}
+</style>
 <div class="loader-bg"></div>
 <div class="loader">
     <div class="preloader-wrapper big active">
@@ -57,13 +59,9 @@
             </div>
         </nav>
     </header>
-    
     <aside id="slide-out" class="side-nav white fixed">
         <div class="side-nav-wrapper">
             <div class="sidebar-profile">
-                <div class="sidebar-profile-image">
-                    <img src="assets/images/profile-image.png" class="circle" alt="">
-                </div>
                 <div class="sidebar-profile-info">
                     <a href="javascript:void(0);" class="account-settings-link">
                         <?php 
@@ -98,7 +96,7 @@
             </li>
             
             <li class="no-padding">
-                <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">account_circle</i>Users<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
+                <a class="collapsible-header waves-effect waves-grey active"><i class="material-icons">account_circle</i>Users<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                 <div class="collapsible-body">
                     <ul>
                         <?php include"header/menu-faculty.php";?>    
@@ -106,8 +104,8 @@
                 </div>
             </li>
 
-            <li class="no-padding active">
-                <a class="collapsible-header waves-effect waves-grey active"><i class="material-icons">insert_chart</i>Vote<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
+            <li class="no-padding">
+                <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">insert_chart</i>Vote<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                 <div class="collapsible-body">
                     <ul>
                         <?php include"header/menu-polls.php";?>      
@@ -125,85 +123,97 @@
                 </div>
             </li>
             </div>
+            
         </ul>
+        <!--<div class="footer">
+            <br>
+            <a href="#!">Telecreative </a>
+        </div>
+        !-->
         </div>
     </aside>
     <main class="mn-inner inner-active-sidebar">
-      <div class="row">
-            <div class="col s12">
-            </div>
-            <div class="col s12 m12 l12">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">Voted 
-                        
-                        <table id="example" class="display responsive-table datatable-example">
-                            <thead>
-                                <tr>
-                                    <th width="40">No</th>
-                                    <th width="10%">Avatar</th>
-                                    <th>Candidate</th>
-                                    <th>Title Polls</th>
-                                    <th>Voted</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php 
-                                    $no = 1;
-                                    foreach ($voted as $vote) {
-                                      
-                                ?>
-                                <tr>
-                                    <td><?php echo $no;?></td>
-                                    <?php 
-                                        $avatar = $vote->avatar;
-                                        $avanull = substr($avatar,10);
+        <br><br>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Input user</span><br>
+                            <div class="row">
+                                <div class="col-lg-12" id="form-padding">
+                                <?php echo form_open_multipart('insertusers');?>
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input id="nim" type="text" class="validate" required="ON" name="nim">
+                                            <label for="title">Nim</label>
+                                        </div>
+                                        
+                                        <div class="input-field col s6">
+                                          <input id="nama" type='text' class="validate" name="nama">
+                                          <label for="content">Nama</label>
+                                        </div>
 
-                                        if($avanull == ""){
-                                        ?><td><img src="https://www.1plusx.com/app/mu-plugins/all-in-one-seo-pack-pro/images/default-user-image.png" width="80%;"></td>
-                                        <?php 
 
-                                        }else{
-                                    ?>
-                                    <td><img src="<?php echo $vote->avatar;?>" width="80%"></td> 
-                                    
-                                    <?php 
-                                    }
-                                    ?>
-                                    <td><?php echo $vote->candidate;?></td>
-                                    <td><?php echo $vote->title_poll;?>
-                                    <?php 
-                                        $candidate = $vote->candidate;
-                                        $x = $vote->id_polls_choice;
+                                        <div class="input-field col s6">
+                                          <input id="email" type='email' class="validate" name="email">
+                                          <label for="content">Email</label>
+                                        </div>
 
-                                        $id_polls =  $vote->id_poll;
+                                        <div class="input-field col s6">
+                                          <input id="phone" type='number' class="validate" name="phone">
+                                          <label for="content">Phone</label>
+                                        </div>
 
-                                        $sql = $this->db->query("SELECT COUNT(*) as total FROM pollsanswers,pollschoices WHERE pollsanswers.id_poll = '$id_polls' AND pollschoices.idpoll_choice = '$x' AND pollsanswers.idpoll_choice = '$x' GROUP BY pollsanswers.idpoll_choice = '$x' ");
-                                        $row = $sql->row();
-                                    ?>
-                                    <td>
-                                        <?php  
-                                            if($row->total == ""){
-                                                echo "0 Voted";
-                                            }else{
-                                                echo $row->total." Voted";
-                                            }
-                                        ?>
-                                            
-                                    </td>
-                                </tr>
-                                <?php
-                                  $no++; 
-                                  }
-                                ?>
-                            </tbody>
-                        </table>
+                                        <div class="input-field col s5">
+                                            <select name="id_faculty" required>
+                                                <option value="" selected="by" disabled="ON">Faculty</span></option>
+                                                <?php foreach($faculties as $faculty){
+                                                ?>
+                                                <option value="<?php echo $faculty->id_faculty;?>"><?php echo $faculty->faculty;?> </option>
+
+                                                <?php }?>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-field col s5">
+                                            <select name="id_major" required>
+                                                <option value="" selected="by" disabled="ON">Major</span></option>
+                                                <?php foreach($majors as $major){
+                                                ?>
+                                                <option value="<?php echo $major->id_major;?>"><?php echo $major->major;?> </option>
+
+                                                <?php }?>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-field col s2">
+                                          <input id="graduated" type='number' class="validate" name="graduated">
+                                          <label for="content">Graduated</label>
+                                        </div>
+
+                                        <div class="input-field col s12">
+                                          <textarea id="content" class="materialize-textarea" name="address"></textarea>
+                                          <label for="content">Address</label>
+                                        </div>
+
+
+                                        <!--<div class="input-field col s6"><br>
+                                            <input id="file" type="file" class="validate" name="picture">
+                                        </div>-->
+
+                                        <div class="input-field col s4">
+                                           <input type="submit" name="submit" value="Add" class="waves-effect light-blue darken-4 btn" class="form-control">
+                                        </div>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-  
     </main>
   
 

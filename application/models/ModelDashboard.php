@@ -2,6 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 Class ModelDashboard extends CI_Model{
 
+
+	public function deleteuser($id)
+	{
+        $this->db->where('id', $id);
+        $this->db->delete('users');
+        $db = $this->db->get('users');
+        return $db;
+	}
+	public function updatedata_user($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
+
 	// Category 
 	public function Load_Category(){
 		$this->db->select('*');
@@ -124,6 +137,12 @@ Class ModelDashboard extends CI_Model{
 	//End Major
 	
 	//User
+
+	public function insertusers($users){
+		$this->db->insert('users',$users);
+		return $db;
+	}
+
 	public function Load_Users(){
 		$this->db->select('*');
 		$this->db->from('users');
@@ -134,6 +153,15 @@ Class ModelDashboard extends CI_Model{
 		return $db;
 	}
 
+	public function edituser($id){
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->join('faculties','users.id_faculty = faculties.id_faculty');
+		$this->db->join('majors','users.id_major = majors.id_major');
+		$this->db->where('users.id',$id);
+    	$query =$this->db->get();
+    	return $query;
+	}
 	//End User
 
 
@@ -432,6 +460,7 @@ Class ModelDashboard extends CI_Model{
 	        return FALSE;
 	    }
 	}
+
 	public function replaceCandidate($id)
 	{
 		$this->db->where('idpoll_choice',$id);

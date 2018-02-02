@@ -79,6 +79,144 @@ class DashboardController extends CI_Controller {
 		$this->load->view('back-end/footer/footer');	
 	}
 
+	public function addusers(){
+		$fal['faculties']   = $this->ModelDashboard->Load_FacultiesMajors()->result();
+		$fal['majors']    	= $this->ModelDashboard->Load_QMajors()->result();
+		$this->load->view('back-end/header/header');
+		$this->load->view('back-end/addusers',$fal);
+		$this->load->view('back-end/footer/footer');	
+	}
+
+	public function deleteuser() {
+        $id = $this->uri->segment(2);
+        $this->ModelDashboard->deleteuser($id);
+        redirect("users");
+	}
+
+	public function listuser(){
+		$this->load->view('back-end/header/header');
+		$this->load->view('back-end/listuser');
+		$this->load->view('back-end/footer/footer');	
+	}
+
+	public function insertusers(){
+       	$imageUrl = base_url();
+		$nim    		= $this->input->post('nim');
+		$nama   	 	= $this->input->post('nama');
+		$email    		= $this->input->post('email');
+		$phone    		= $this->input->post('phone');
+		$id_faculty     = $this->input->post('id_faculty');
+		$id_major    	= $this->input->post('id_major');
+		$graduated    	= $this->input->post('graduated');
+		$address    	= $this->input->post('address');
+
+		$tempFile 		= $_FILES['picture']['tmp_name'];
+		$fileName 		= time().$_FILES['picture']['name'];	 
+		$targetPath		= '/opt/lampp/htdocs/trisakti_connect/images/'; 
+		$targetFile 	= $targetPath . $fileName ;
+
+		move_uploaded_file($tempFile, $targetFile);
+
+		$users = array(
+			'nim'  			=> $nim,
+			'name'  		=> $nama,
+			'email'  		=> $email,
+			'phone'  		=> $phone,
+			//'avatar'		=> $imageUrl."images/".$fileName,
+			'id_faculty'  	=> $id_faculty,
+			'id_major'  	=> $id_major,
+			'graduated'  	=> $graduated,
+			'address'		=> $address
+		);
+
+		$this->ModelDashboard->insertusers($users); 
+        redirect('users');
+        
+	}
+
+	public function edituser(){
+		$id = $this->uri->segment(2);
+		$user['faculties']    = $this->ModelDashboard->Load_FacultiesMajors()->result();
+		$user['majors']    = $this->ModelDashboard->Load_QMajors()->result();
+		$user['users']    = $this->ModelDashboard->edituser($id,'users')->result();	
+		$this->load->view('back-end/header/header');
+		$this->load->view('back-end/edituser',$user);
+		$this->load->view('back-end/footer/footer');	
+	}
+
+	public function updateuser() {
+		$id = $this->input->post('id');
+		$nim = $this->input->post('nim');
+		$name = $this->input->post('name');
+		$email = $this->input->post('email');
+		$phone = $this->input->post('phone');
+		$id_faculty = $this->input->post('id_faculty');
+		$id_major = $this->input->post('id_major');
+		$address = $this->input->post('address');
+		$graduated = $this->input->post('graduated');
+		
+
+		if($id_faculty == NULL && $id_major == NULL){
+			
+			$data = array(
+				'nim' 		=> $nim,
+				'name' 		=> $name,
+				'email' 	=> $email,
+				'phone' 	=> $phone,
+				'address' 	=> $address,
+				'graduated' => $graduated
+			);
+			$where = array(
+				'id' => $id
+			);
+
+		}elseif($id_faculty == NULL){
+			$data = array(
+				'nim' 		=> $nim,
+				'name' 		=> $name,
+				'email' 	=> $email,
+				'id_major' 	=> $id_major,
+				'phone' 	=> $phone,
+				'address'	=> $address,
+				'graduated'	=> $graduated
+			);
+			$where = array(
+				'id' => $id
+			);
+
+		}elseif($id_major == NULL){
+			$data = array(
+				'nim' 			=> $nim,
+				'name' 			=> $name,
+				'email' 		=> $email,
+				'id_faculty' 	=> $id_faculty,
+				'phone' 		=> $phone,
+				'address'		=> $address,
+				'graduated'		=> $graduated
+			);
+			$where = array(
+				'id' => $id
+			);
+		}else{
+			$data = array(
+				'nim' 			=> $nim,
+				'name' 			=> $name,
+				'email' 		=> $email,
+				'id_faculty' 	=> $id_faculty,
+				'id_major' 		=> $id_major,
+				'phone' 		=> $phone,
+				'address'		=> $address,
+				'graduated'		=> $graduated
+			);
+			$where = array(
+				'id' => $id
+			);
+		}
+		$this->ModelDashboard->updatedata_user($where,$data,'users');
+		redirect("users");
+		
+	}
+
 	public function insertcategories(){
        
 		$title    = $this->input->post('title');
@@ -435,11 +573,10 @@ class DashboardController extends CI_Controller {
 		move_uploaded_file($tempFile, $targetFile);
  
 		$polls = array(
-			'title_poll'	=> $title,
+			'title_poll'			=> $title,
 			'thumbnail_poll'		=> $imageUrl."images/".$fileName,
-			'content_poll'	=> $content
+			'content_poll'			=> $content
           );
-		//var_dump($fileName);
         $this->ModelDashboard->insert_titlepolls($polls); 
         $this->session->set_flashdata('berhasil_pic', 'Berhasil Upload Foto');
         redirect('polls');

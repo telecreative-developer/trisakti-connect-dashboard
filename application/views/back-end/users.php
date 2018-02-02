@@ -1,3 +1,44 @@
+    <div class="loader-bg"></div>
+    <div class="loader">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                <div class="circle"></div>
+                </div>
+            </div>
+            <div class="spinner-layer spinner-teal lighten-1">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                <div class="circle"></div>
+                </div>
+            </div>
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                <div class="circle"></div>
+                </div>
+            </div>
+            <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="mn-content fixed-sidebar">
             <header class="mn-header navbar-fixed">
                 <nav class="light-blue darken-4">
@@ -16,9 +57,6 @@
             <aside id="slide-out" class="side-nav white fixed">
                 <div class="side-nav-wrapper">
                     <div class="sidebar-profile">
-                        <div class="sidebar-profile-image">
-                            <img src="assets/images/profile-image.png" class="circle" alt="">
-                        </div>
                         <div class="sidebar-profile-info">
                             <a href="javascript:void(0);" class="account-settings-link">
                                 <?php 
@@ -97,21 +135,21 @@
                             <div class="card-content">
                                 <span class="card-title">Users 
                                 <br>
+                                <a href="addusers" class="waves-effect light-blue darken-4 btn">New Users</a>
                                 </span>
                                 <table id="example" class="display responsive-table datatable-example">
                                     <thead>
                                         <tr span style="font-size:12px;">
-                                            <th width="5%">No</th>
+                                            <th>No</th>
                                             <th>Nim</th>
                                             <th>Picture</th>
-                                            <th width="10%">Name</th>
-                                            <th width="8%">Gender</th>
-                                            <th width="10%">Email</th>
-                                            <th>Phone</th>
-                                            <th width="15%">Alamat</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
                                             <th>Faculty</th>
                                             <th>Major</th>  
-                                            <th>Graduated</th>
+                                            <th>Phone</th>
+                                            <th>Graduated</th>  
+                                            <th width='3%'>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -131,39 +169,31 @@
 
                                                 }else{
                                             ?>
-                                            <td><?php echo $user->avatar;?></td> 
+                                            <td><img src='<?php echo $user->avatar;?>' width='50px'></td> 
                                             
                                             <?php 
                                             }
                                             ?>
                                             <td><?php echo $user->name?></td>
-                                            <?php 
-                                                $gender = $user->gender;
-                                                //var_dump($gender);
-
-                                                if($gender == 1){
-                                                    ?><td><?php echo "Laki - Laki";?></td>
-                                                <?php
-                                                }else{
-                                                    ?> <td><?php echo"Perempuan";?></td>
-                                               <?php 
-                                                }?>
                                             <td><?php echo $user->email;?></td>
-                                            <td><?php echo $user->phone;?></td>
-                                            <td>
-                                                <?php echo $user->address;?> 
-                                                <?php echo "KEC ".$user->kecamatan;?>
-                                                <?php echo "KEL ".$user->kelurahan;?>
-                                                <?php echo $user->provinsi;?>
-                                                    
-                                            </td>
                                             
                                             <td><?php echo $user->faculty;?></td>
                                             <td><?php echo $user->major;?></td>
+                                            <td><?php echo $user->phone;?></td>
                                             <td><?php echo $user->graduated;?></td>
+                                            <td>
+
+                                                <a href="<?php echo base_url();?>edituser/<?php echo $user->id;?>">
+                                                    <button class="waves-effect light-blue darken-4 btn"><i class="material-icons left">edit</i> </button> 
+                                                </a>
+
+                                                <a onclick="javascript:return confirm('Delete ?')" href="deleteuser/<?php echo $user->id;?>">
+                                                    <button class="waves-effect red lighten-1 btn"><i class="material-icons left">close</i> </button> 
+                                                </a>
+                                            </td>
                                         </tr>
                                         <?php
-                                          $no++; 
+                                          $no++;
                                           }
                                         ?>
                                     </tbody>

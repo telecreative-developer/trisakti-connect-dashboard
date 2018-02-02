@@ -1,50 +1,45 @@
-<style type="text/css">
-    #form-padding{
-        padding: 10px;
-    }
-</style>
-        <div class="loader-bg"></div>
-        <div class="loader">
-            <div class="preloader-wrapper big active">
-                <div class="spinner-layer spinner-blue">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div><div class="gap-patch">
+    <div class="loader-bg"></div>
+    <div class="loader">
+        <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
                     <div class="circle"></div>
-                    </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                    </div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                <div class="circle"></div>
                 </div>
-                <div class="spinner-layer spinner-teal lighten-1">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div><div class="gap-patch">
+            </div>
+            <div class="spinner-layer spinner-teal lighten-1">
+                <div class="circle-clipper left">
                     <div class="circle"></div>
-                    </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                    </div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                <div class="circle"></div>
                 </div>
-                <div class="spinner-layer spinner-yellow">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div><div class="gap-patch">
+            </div>
+            <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
                     <div class="circle"></div>
-                    </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                    </div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                <div class="circle"></div>
                 </div>
-                <div class="spinner-layer spinner-green">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div><div class="gap-patch">
+            </div>
+            <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
                     <div class="circle"></div>
-                    </div><div class="circle-clipper right">
-                    <div class="circle"></div>
-                    </div>
+                </div><div class="gap-patch">
+                <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                <div class="circle"></div>
                 </div>
             </div>
         </div>
-        <div class="mn-content fixed-sidebar">
+    </div>
+    <div class="mn-content fixed-sidebar">
             <header class="mn-header navbar-fixed">
                 <nav class="light-blue darken-4">
                     <div class="nav-wrapper row">
@@ -59,7 +54,6 @@
                     </div>
                 </nav>
             </header>
-            
             <aside id="slide-out" class="side-nav white fixed">
                 <div class="side-nav-wrapper">
                     <div class="sidebar-profile">
@@ -113,7 +107,6 @@
                             </ul>
                         </div>
                     </li>
-
                     <div class="hidden" span style="display:none">
                         <li class="no-padding">
                             <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">report</i>Report<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
@@ -124,70 +117,13 @@
                             </div>
                         </li>
                     </div>
-                    
                 </ul>
-                <!--<div class="footer">
-                    <br>
-                    <a href="#!">Telecreative </a>
-                </div>
-                !-->
                 </div>
             </aside>
             <main class="mn-inner inner-active-sidebar">
-                <br><br>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-content">
-                                    <span class="card-title">Edit Majors</span><br>
-                                    <div class="row">
-                                        <div class="col-lg-12" id="form-padding">
-                                        <?php echo form_open_multipart('DashboardController/updatemajors');?>
-                                        <?php foreach($majors as $maj){?>
-                                            <div class="row">
-                                                <div class="input-field col s6">
-                                                    <div class="hidden" span style="display:none;">
-                                                        <input type="text" name="id" value="<?php echo $maj->id_major;?>">
-                                                    </div>
-                                                    
-                                                    <input id="title" type="text" class="validate" name="major" value="<?php echo $maj->major;?>"> 
-                                                </div>
 
-                                                <div class="input-field col s6">
-                                                    <select name="id_faculty">
-                                                        <?php 
-                                                        $id_faculty = $maj->id_faculty;
-                                                        ?>
-                                                        <option selected="by" disabled="ON" value="<?php echo $id_faculty;?>"><?php echo $maj->faculty;?></option>
-
-                                                        <?php 
-                                                        
-                                                        foreach($faculties as $fal){
-                                                        ?>
-                                                        
-                                                        <option value="<?php echo $fal->id_faculty;?>"><?php echo $fal->faculty;?> </option>
-
-                                                        <?php }?>
-                                                    </select>
-                                                </div>
-
-                                                <div class="input-field col s6">
-                                                   <input type="submit" name="submit" value="Save" class="waves-effect light-blue darken-4 btn" class="form-control">
-                                                </div>
-                                            </div>
-                                        <?php } ?>
-                                        </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </main>
-          
-
             <div class="page-footer">
                 <div class="footer-grid container">
                     <div class="footer-l white">&nbsp;</div>

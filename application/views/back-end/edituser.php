@@ -56,7 +56,6 @@
                         <div class="header-title col s3 m3">      
                             <span class="chapter-title">Dashboard</span>
                         </div>
-
                     </div>
                 </nav>
             </header>
@@ -64,9 +63,6 @@
             <aside id="slide-out" class="side-nav white fixed">
                 <div class="side-nav-wrapper">
                     <div class="sidebar-profile">
-                        <div class="sidebar-profile-image">
-                            <img src="<?php echo base_url();?>assets/images/profile-image.png" class="circle" alt="">
-                        </div>
                         <div class="sidebar-profile-info">
                             <a href="javascript:void(0);" class="account-settings-link">
                                 <?php 
@@ -100,8 +96,8 @@
                         </div>
                     </li>
                     
-                    <li class="no-padding">
-                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">account_circle</i>Users<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
+                    <li class="no-padding active">
+                        <a class="collapsible-header waves-effect waves-grey active"><i class="material-icons">account_circle</i>Users<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <?php include"header/menu-faculty.php";?>    
@@ -109,8 +105,8 @@
                         </div>
                     </li>
 
-                    <li class="no-padding active">
-                        <a class="collapsible-header waves-effect waves-grey active"><i class="material-icons">insert_chart</i>Vote<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
+                    <li class="no-padding">
+                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">insert_chart</i>Vote<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <?php include"header/menu-polls.php";?>      
@@ -144,49 +140,69 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-content">
-                                    <span class="card-title">Edit Majors</span><br>
+                                    <span class="card-title">Edit User</span><br>
                                     <div class="row">
                                         <div class="col-lg-12" id="form-padding">
-                                        <?php echo form_open_multipart('updatecandidate');?>
-                                        <?php foreach($polls as $polls){?>
+                                        <?php foreach ($users as $user) { ?>
+                                        <?php echo form_open_multipart('updateuser');?>
                                             <div class="row">
-                                                <div class="input-field col s4">
-                                                    <div class="hidden" span style="display:none;">
-                                                        <input type="text" name="id" value="<?php echo $polls->idpoll_choice;?>">
-                                                    </div>
-                                                    
-                                                    <input id="candidate" type="text" class="validate" name="candidate" value="<?php echo $polls->candidate;?>"> 
+                                                <div style='display:none' class="input-field col s6">
+                                                    <input type="text" value='<?php echo $user->id;?>' required="ON" name="id">
                                                 </div>
 
-                                                <div class="input-field col s4">
-                                                    <select name="id_poll">
-                                                        <?php 
-                                                        $id_poll = $polls->id_poll;
-                                                        ?>
-                                                        <option selected="by" disabled="ON" value="<?php echo $id_poll;?>"><?php echo $polls->title_poll;?></option>
+                                                <div class="input-field col s6">
+                                                    <input type="text" value='<?php echo $user->nim;?>' required="ON" name="nim">
+                                                </div>
+                                                
+                                                <div class="input-field col s6">
+                                                  <input type='text' value='<?php echo $user->name;?>' name="name">
+                                                </div>
 
-                                                        <?php 
-                                                        
-                                                        foreach($title_polls as $title){
+
+                                                <div class="input-field col s6">
+                                                  <input id="email" type='email' value='<?php echo $user->email;?>' name="email">
+                                                </div>
+
+                                                <div class="input-field col s6">
+                                                  <input id="phone" type='number' value='<?php echo $user->phone;?>' name="phone">
+                                                </div>
+
+                                                <div class="input-field col s5">
+                                                    <select name="id_faculty" required>
+                                                        <option value='<?php echo $user->id_faculty;?>' selected="by" disabled="ON"><?php echo $user->faculty;?></span></option>
+                                                        <?php foreach($faculties as $faculty){
                                                         ?>
-                                                        
-                                                        <option value="<?php echo $title->id_poll;?>"><?php echo $title->title_poll;?> </option>
+                                                        <option value="<?php echo $faculty->id_faculty;?>"><?php echo $faculty->faculty;?> </option>
 
                                                         <?php }?>
                                                     </select>
                                                 </div>
 
-                                                <br>
-                                                <div class="input-field col s4">
-                                                    <input id="avatar" type="file" name="picture"> 
+                                                <div class="input-field col s5">
+                                                    <select name="id_major" required>
+                                                        <option value='<?php echo $user->id_major;?>' selected="by" disabled="ON"><?php echo $user->major?></span></option>
+                                                        <?php foreach($majors as $major){
+                                                        ?>
+                                                        <option value="<?php echo $major->id_major;?>"><?php echo $major->major;?> </option>
+
+                                                        <?php }?>
+                                                    </select>
                                                 </div>
 
-                                                <div class="input-field col s6">
-                                                   <input type="submit" name="submit" value="Save" class="waves-effect light-blue darken-4 btn" class="form-control">
+                                                <div class="input-field col s2">
+                                                  <input id="graduated" type='number' class="validate" name="graduated" value="<?php echo $user->graduated;?>">
+                                                </div>
+
+                                                <div class="input-field col s12">
+                                                  <textarea id="content" class="materialize-textarea" name="address"><?php echo $user->address;?></textarea>
+                                                </div>
+
+                                                <div class="input-field col s4">
+                                                   <input type="submit" name="submit" value="Edit" class="waves-effect light-blue darken-4 btn" class="form-control">
                                                 </div>
                                             </div>
-                                        <?php } ?>
                                         </form>
+                                        <?php }?>
                                         </div>
                                     </div>
                                 </div>
