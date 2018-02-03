@@ -112,7 +112,7 @@ class DashboardController extends CI_Controller {
 
 		$tempFile 		= $_FILES['picture']['tmp_name'];
 		$fileName 		= time().$_FILES['picture']['name'];	 
-		$targetPath		= '/opt/lampp/htdocs/trisakti_connect/images/'; 
+		$targetPath		= '/var/www/html/Trisakti/images/'; 
 		$targetFile 	= $targetPath . $fileName ;
 
 		move_uploaded_file($tempFile, $targetFile);
@@ -552,7 +552,7 @@ class DashboardController extends CI_Controller {
 	public function delpolls() {
         $id = $this->uri->segment(2);
         $this->ModelDashboard->delpolls($id);
-        //redirect("polls");
+        redirect("polls");
 	}
 
 	public function addpolls(){
@@ -568,7 +568,7 @@ class DashboardController extends CI_Controller {
 		$picture 		= $this->input->post('picture');
 		$tempFile 		= $_FILES['picture']['tmp_name'];
 		$fileName 		= time().$_FILES['picture']['name'];	 
-		$targetPath		= '/opt/lampp/htdocs/trisakti_connect/images/'; 
+		$targetPath		= '/var/www/html/Trisakti/images/'; 
 		$targetFile 	= $targetPath . $fileName ;
 
 		move_uploaded_file($tempFile, $targetFile);
@@ -578,7 +578,9 @@ class DashboardController extends CI_Controller {
 			'thumbnail_poll'		=> $imageUrl."images/".$fileName,
 			'content_poll'			=> $content
           );
-        $this->ModelDashboard->insert_titlepolls($polls); 
+	//$dirpath = dirname(getcwd());
+	//var_dump($dirpath);
+     	$this->ModelDashboard->insert_titlepolls($polls); 
         $this->session->set_flashdata('berhasil_pic', 'Berhasil Upload Foto');
         redirect('polls');
         
@@ -600,7 +602,7 @@ class DashboardController extends CI_Controller {
 		$content 		= $this->input->post('content');
 		$tempFile 		= $_FILES['picture']['tmp_name'];	
 		$fileName 		= time().$_FILES['picture']['name'];
-		$targetPath		= '/opt/lampp/htdocs/trisakti_connect/images/'; 
+		$targetPath		= '/var/www/html/Trisakti/images/'; 
 
 		$targetFile 	= $targetPath . $fileName ;
 		move_uploaded_file($tempFile, $targetFile);
@@ -694,7 +696,7 @@ class DashboardController extends CI_Controller {
 		$tempFile 		= $_FILES['picture']['tmp_name'];
 		$fileName 		= time().$_FILES['picture']['name'];
  		 
-		$targetPath		= '/opt/lampp/htdocs/trisakti_connect/images/'; 
+		$targetPath		= '/var/www/html/Trisakti/images/'; 
 		$targetFile 	= $targetPath . $fileName ;
 		move_uploaded_file($tempFile, $targetFile);
  
@@ -729,22 +731,21 @@ class DashboardController extends CI_Controller {
 		$tempFile 		= $_FILES['picture']['tmp_name'];
 		$fileName 		= time().$_FILES['picture']['name'];
  		 
-		$targetPath		= '/opt/lampp/htdocs/trisakti_connect/images/'; 
+		$targetPath		= '/var/www/html/Trisakti/images/'; 
 		$targetFile 	= $targetPath . $fileName ;
 		move_uploaded_file($tempFile, $targetFile);
  		
  		$id_poll = $this->input->post('id_poll');
-		$x = substr($fileName, 10);
-
+		$x = $fileName;
 		if($id_poll == NULL AND $x == ""){
 			$data = array(
 				'candidate' => $candidate
 			);
-			
+
 			$where = array(
 				'idpoll_choice' => $id
 			);
-			$this->ModelDashboard->updatedata_can($where,$data,'polls_choice');
+			$this->ModelDashboard->updatedata_can($where,$data,'pollschoices');
 		}
 		elseif($x == ""){
 			$data = array(
@@ -752,11 +753,11 @@ class DashboardController extends CI_Controller {
 				'id_poll' => $id_poll
 
 			);
-			
+
 			$where = array(
 				'idpoll_choice' => $id
 			);
-			$this->ModelDashboard->updatedata_can($where,$data,'polls_choice');
+			$this->ModelDashboard->updatedata_can($where,$data,'pollschoices');
 
 		}elseif($id_poll == NULL){
 			$data = array(
@@ -770,12 +771,13 @@ class DashboardController extends CI_Controller {
 				'idpoll_choice' => $id
 			);
 			$this->ModelDashboard->replaceCandidate($id);
-			$this->ModelDashboard->updatedata_can($where,$data,'polls_choice');
+			$this->ModelDashboard->updatedata_can($where,$data,'pollschoices');
 		}
-		
+
 		else{
 
 		}
+		//var_dump($x);
 		redirect("candidate");	
 	}
 

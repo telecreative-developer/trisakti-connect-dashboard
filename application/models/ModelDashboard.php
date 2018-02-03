@@ -362,18 +362,19 @@ Class ModelDashboard extends CI_Model{
         $this->db->where('id_poll',$id);
 		$query = $this->db->get('polls');
 		$row = $query->row();
-		$x = substr($row->thumbnail_poll,46);
+		$x = substr($row->thumbnail_poll,38);
+		//$x = $row->thumbnail_poll;
 
 	    $this->db->delete('polls',array('id_poll' => $id));
-	    $path ='/opt/lampp/htdocs/trisakti_connect/images/'.$x;
-	    //chmod($path, 0666);
+	    $path ='/var/www/html/Trisakti/images/'.$x;
+	    
 	    if($this->db->affected_rows() >= 1){
 	    if(unlink($path))
 	    return TRUE;
 	    } else {
 	        return FALSE;
 	    }
-	    var_dump($path);
+	    
 	    
     }
 
@@ -381,9 +382,9 @@ Class ModelDashboard extends CI_Model{
        	$this->db->where('id_poll',$id);
 		$query = $this->db->get('polls');
 		$row = $query->row();
-		$x = substr($row->pic_polls,46);
+		$x = substr($row->pic_polls,38);
 
-	    $path ='/opt/lampp/htdocs/trisakti_connect/images/'.$x;
+	    $path ='/var/www/html/Trisakti/images/'.$x;
 	    var_dump($path);
 	    if($this->db->affected_rows() >= 1){
 	    if(unlink($path))
@@ -447,11 +448,11 @@ Class ModelDashboard extends CI_Model{
 		$this->db->where('idpoll_choice',$id);
 		$query = $this->db->get('pollschoices');
 		$row = $query->row();
-		$x = substr($row->avatar,46);
+		$x = substr($row->avatar,38);
 
 
 	    $this->db->delete('pollschoices',array('idpoll_choice' => $id));
-	    $path ='/opt/lampp/htdocs/trisakti_connect/images/'.$x;
+	    $path ='/var/www/html/Trisakti/images/'.$x;
 	    var_dump($path);
 	    if($this->db->affected_rows() >= 1){
 	    if(unlink($path))
@@ -466,9 +467,9 @@ Class ModelDashboard extends CI_Model{
 		$this->db->where('idpoll_choice',$id);
 		$query = $this->db->get('pollschoices');
 		$row = $query->row();
-		$x = substr($row->avatar,46);
+		$x = substr($row->avatar,38);
 
-	    $path ='/opt/lampp/htdocs/trisakti_connect/images/'.$x;
+	    $path ='/var/www/html/Trisakti/images/'.$x;
 	    var_dump($path);
 	    if($this->db->affected_rows() >= 1){
 	    if(unlink($path))
