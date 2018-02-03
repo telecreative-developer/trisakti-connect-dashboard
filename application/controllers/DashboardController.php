@@ -123,6 +123,7 @@ class DashboardController extends CI_Controller {
 			'email'  		=> $email,
 			'phone'  		=> $phone,
 			//'avatar'		=> $imageUrl."images/".$fileName,
+			'password'		=> '1',
 			'id_faculty'  	=> $id_faculty,
 			'id_major'  	=> $id_major,
 			'graduated'  	=> $graduated,
