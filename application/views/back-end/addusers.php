@@ -145,7 +145,7 @@
                                 <?php echo form_open_multipart('insertusers');?>
                                     <div class="row">
                                         <div class="input-field col s6">
-                                            <input id="nim" type="text" class="validate" required="ON" name="nim">
+                                            <input id="nim" type="text" class="validate" name="nim">
                                             <label for="title">Nim</label>
                                         </div>
                                         

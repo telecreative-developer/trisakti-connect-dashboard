@@ -147,6 +147,7 @@
                             </thead>
 
                             <?php 
+			    $no = 1;
 
                             foreach ($pending as $new) {
                               
