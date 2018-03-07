@@ -107,16 +107,14 @@
                             </ul>
                         </div>
                     </li>
-                    <div class="hidden" span style="display:none">
-                        <li class="no-padding">
-                            <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">report</i>Report<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <?php include"header/menu-report.php";?>      
-                                </ul>
-                            </div>
-                        </li>
-                    </div>
+                    <li class="no-padding">
+                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">report</i>Report<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <?php include "header/menu-report.php";?>      
+                            </ul>
+                        </div>
+                    </li>  
                     
                 </ul>
                 <!--<div class="footer">
@@ -140,16 +138,16 @@
                                 <table id="example" class="display responsive-table datatable-example">
                                     <thead>
                                         <tr span style="font-size:12px;">
-                                            <th>No</th>
-                                            <th>Nim</th>
+                                            <th width='3%'>No</th>
+                                            <th width='10%'>Nim</th>
                                             <th>Picture</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Faculty</th>
-                                            <th>Major</th>  
-                                            <th>Phone</th>
-                                            <th>Graduated</th>  
-                                            <th width='3%'>Action</th>
+                                            <th width='10%'>Name</th>
+                                            <th width='15%'>Email</th>
+                                            <th width='10%'>Faculty</th>
+                                            <th width='10%'>Major</th>  
+                                            <th width='3%'>Phone</th>
+                                            <th width='8%'>Graduated</th>  
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -158,8 +156,8 @@
                                             foreach ($users as $user) {
                                               
                                         ?>
-                                        <tr span style="font-size: 11px;">
-                                            <td><?php echo $no;?></td>
+                                        <tr span style="font-size: 12px;">
+                                            <td><center><?php echo $no;?></center></td>
                                             <td><?php echo $user->nim;?></td>
                                              <?php 
                                                 $avatar = $user->avatar;
@@ -184,11 +182,11 @@
                                             <td>
 
                                                 <a href="<?php echo base_url();?>edituser/<?php echo $user->id;?>">
-                                                    <button class="waves-effect light-blue darken-4 btn"><i class="material-icons left">edit</i> </button> 
+                                                    <i class="material-icons left">edit</i>
                                                 </a>
 
                                                 <a onclick="javascript:return confirm('Delete ?')" href="deleteuser/<?php echo $user->id;?>">
-                                                    <button class="waves-effect red lighten-1 btn"><i class="material-icons left">close</i> </button> 
+                                                    <i class="material-icons left">close</i>
                                                 </a>
                                             </td>
                                         </tr>

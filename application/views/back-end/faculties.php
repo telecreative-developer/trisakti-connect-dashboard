@@ -87,7 +87,7 @@
                         <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">import_contacts</i>News<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <?php include"header/menu-news.php";?>
+                                <?php include "header/menu-news.php";?>
                             </ul>
                         </div>
                     </li>
@@ -96,7 +96,7 @@
                         <a class="collapsible-header waves-effect waves-grey active"><i class="material-icons">account_circle</i>Users<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <?php include"header/menu-faculty.php";?>    
+                                <?php include "header/menu-faculty.php";?>    
                             </ul>
                         </div>
                     </li>
@@ -105,21 +105,19 @@
                         <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">insert_chart</i>Vote<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <?php include"header/menu-polls.php";?>      
+                                <?php include "header/menu-polls.php";?>      
                             </ul>
                         </div>
                     </li>
 
-                    <div class="hidden" span style="display:none">
-                        <li class="no-padding">
-                            <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">report</i>Report<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <?php include"header/menu-report.php";?>      
-                                </ul>
-                            </div>
-                        </li>
-                    </div>
+                    <li class="no-padding">
+                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">report</i>Report<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <?php include "header/menu-report.php";?>      
+                            </ul>
+                        </div>
+                    </li>  
                     
                 </ul>
                 </div>
@@ -138,8 +136,8 @@
                                 <table id="example" class="display responsive-table datatable-example">
                                     <thead>
                                         <tr>
-                                            <th width="40">No</th>
-                                            <th>Faculties</th>
+                                            <th width="4%">No</th>
+                                            <th width="88%">Faculties</th>
                                             <th>Action </th>
                                         </tr>
                                     </thead>
@@ -150,17 +148,16 @@
                                               
                                         ?>
                                         <tr>
-                                            <td><?php echo $no;?></td>
+                                            <td><center><?php echo $no;?></center></td>
                                             <td><?php echo $fal->faculty?></td>
                                             <td>
 
                                                 <a href="<?php echo base_url() . "editfaculties/" . $fal->id_faculty; ?>">
-                                                    <button class="waves-effect light-blue darken-4 btn"><i class="material-icons left">edit</i>Edit </button> 
+                                                    <i class="material-icons left">edit</i>
                                                 </a>
 
                                                 <a onclick="javascript:return confirm('Delete ?')" href="<?php echo base_url() . "delfaculties/" . $fal->id_faculty; ?>">
-                                                    
-                                                    <button class="waves-effect red lighten-1 btn"><i class="material-icons left">close</i>Delete </button> 
+                                                    <i class="material-icons left">close</i>
                                                 </a>
                                             </td>
                                         </tr>

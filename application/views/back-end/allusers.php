@@ -51,6 +51,7 @@
                 <div class="header-title col s3 m3">      
                     <span class="chapter-title">Dashboard</span>
                 </div>
+
             </div>
         </nav>
     </header>
@@ -82,8 +83,8 @@
         <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion">
             <li class="no-padding"><a class="waves-effect waves-grey" href="<?php echo base_url();?>dashboard"><i class="material-icons">settings_input_svideo</i>Dashboard</a></li>
             
-            <li class="no-padding">
-                <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">import_contacts</i>News<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
+            <li class="no-padding active">
+                <a class="collapsible-header waves-effect waves-grey active"><i class="material-icons">import_contacts</i>News<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                 <div class="collapsible-body">
                     <ul>
                         <?php include "header/menu-news.php";?>
@@ -91,8 +92,8 @@
                 </div>
             </li>
             
-            <li class="no-padding active">
-                <a class="collapsible-header waves-effect waves-grey active"><i class="material-icons">account_circle</i>Users<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
+            <li class="no-padding">
+                <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">account_circle</i>Users<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                 <div class="collapsible-body">
                     <ul>
                         <?php include "header/menu-faculty.php";?>    
@@ -117,14 +118,8 @@
                     </ul>
                 </div>
             </li>  
-            
         </ul>
-        <!--<div class="footer">
-            <br>
-            <a href="#!">Telecreative </a>
-        </div>
-        !-->
-        </div>
+    </div>
     </aside>
     <main class="mn-inner inner-active-sidebar">
       <div class="row">
@@ -133,43 +128,52 @@
             <div class="col s12 m12 l12">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title">Majors 
+                        <span class="card-title">All Users 
                         <br>
-                        <a href="addmajors" class="waves-effect light-blue darken-4 btn">New Majors</a>
                         </span>
                         <table id="example" class="display responsive-table datatable-example">
                             <thead>
                                 <tr>
-                                    <th width="3%">No</th>
-                                    <th width="45%">Majors</th>
-                                    <th width="45%">Faculty</th>
-
-                                    <th>Action </th>
+                                  <th width='3%'>No</th>
+                                  <th width='10%'>Nim</th>
+                                  <th width='10%'>Name</th>
+                                  <th width='15%'>Email</th>
+                                  <th width='10%'>Faculty</th>
+                                  <th width='10%'>Major</th>  
+                                  <th width='3%'>Phone</th>
+                                  <th width='10%'>Graduated</th>
+                                  <th width='20%'>Address</th>  
+                                  <th width='15%'>Verified</th>
+                                  <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php 
                                     $no = 1;
-                                    foreach ($majors as $maj) {
+                                    foreach ($users as $user) {
                                       
                                 ?>
-                                <tr>
+                                <tr span style="font-size: 12px;">
                                     <td><center><?php echo $no;?></center></td>
-                                    <td><?php echo $maj->major?></td>
-                                    <td><?php echo $maj->faculty?>
+                                    <td><?php echo $user->nim;?></td>
+                                    <td><?php echo $user->name?></td>
+                                    <td><?php echo $user->email;?></td>
+                                    
+                                    <td><?php echo $user->faculty;?></td>
+                                    <td><?php echo $user->major;?></td>
+                                    <td><?php echo $user->phone;?></td>
+                                    <td><?php echo $user->graduated;?></td>
+                                    <td><?php echo $user->address;?></td>
+                                    <td><span style="color:green">Menunggu Verifikasi</span></td>
                                     <td>
 
-                                        <a href="<?php echo base_url() . "editmajors/" . $maj->id_major; ?>">
-                                            <i class="material-icons left">edit</i>
-                                        </a>
-
-                                        <a onclick="javascript:return confirm('Delete ?')" href="<?php echo base_url() . "delmajors/" . $maj->id_major; ?>">
-                                            <i class="material-icons left">close</i>
+                                        <a href="<?php echo base_url();?>verifyusers/<?php echo $user->id;?>">
+                                            <i class="material-icons left">check</i>
                                         </a>
                                     </td>
                                 </tr>
                                 <?php
-                                  $no++; 
+                                  $no++;
                                   }
                                 ?>
                             </tbody>

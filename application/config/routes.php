@@ -80,6 +80,8 @@ $route['editmajors/:any'] = 'DashboardController/editmajors';
 
 
 $route['users'] = 'DashboardController/users';
+$route['registerusers'] = 'DashboardController/registerusers';
+$route['verifyusers/:any'] = 'DashboardController/verifyUsers';
 $route['allnews'] = 'DashboardController/allnews';
 $route['editnews/:any'] = 'DashboardController/editnews';
 $route['pendingnews/:any'] = 'DashboardController/pendingnews';

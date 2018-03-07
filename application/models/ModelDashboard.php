@@ -153,6 +153,17 @@ Class ModelDashboard extends CI_Model{
 		return $db;
 	}
 
+	public function Load_UsersVerify(){
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->join('faculties','users.id_faculty = faculties.id_faculty');
+		$this->db->join('majors','users.id_major = majors.id_major');
+		$this->db->where('verified','0');
+		$this->db->order_by('id','desc');
+		$db = $this->db->get();
+		return $db;
+	}
+
 	public function edituser($id){
 		$this->db->select('*');
 		$this->db->from('users');
@@ -362,19 +373,18 @@ Class ModelDashboard extends CI_Model{
         $this->db->where('id_poll',$id);
 		$query = $this->db->get('polls');
 		$row = $query->row();
-		$x = substr($row->thumbnail_poll,38);
-		//$x = $row->thumbnail_poll;
+		$x = substr($row->thumbnail_poll,46);
 
 	    $this->db->delete('polls',array('id_poll' => $id));
 	    $path ='/var/www/html/Trisakti/images/'.$x;
-	    
+	    //chmod($path, 0666);
 	    if($this->db->affected_rows() >= 1){
 	    if(unlink($path))
 	    return TRUE;
 	    } else {
 	        return FALSE;
 	    }
-	    
+	    var_dump($path);
 	    
     }
 
@@ -382,7 +392,7 @@ Class ModelDashboard extends CI_Model{
        	$this->db->where('id_poll',$id);
 		$query = $this->db->get('polls');
 		$row = $query->row();
-		$x = substr($row->pic_polls,38);
+		$x = substr($row->pic_polls,46);
 
 	    $path ='/var/www/html/Trisakti/images/'.$x;
 	    var_dump($path);
@@ -448,7 +458,7 @@ Class ModelDashboard extends CI_Model{
 		$this->db->where('idpoll_choice',$id);
 		$query = $this->db->get('pollschoices');
 		$row = $query->row();
-		$x = substr($row->avatar,38);
+		$x = substr($row->avatar,46);
 
 
 	    $this->db->delete('pollschoices',array('idpoll_choice' => $id));
@@ -467,7 +477,7 @@ Class ModelDashboard extends CI_Model{
 		$this->db->where('idpoll_choice',$id);
 		$query = $this->db->get('pollschoices');
 		$row = $query->row();
-		$x = substr($row->avatar,38);
+		$x = substr($row->avatar,46);
 
 	    $path ='/var/www/html/Trisakti/images/'.$x;
 	    var_dump($path);
@@ -518,18 +528,9 @@ Class ModelDashboard extends CI_Model{
 	public function Load_Report(){
 		$this->db->select('*');
 		$this->db->from('reports');
-		$this->db->where('status','false');
-		$this->db->order_by('id_reports','desc');
+		$this->db->order_by('id_report','desc');
 		$db = $this->db->get();
 		return $db;
-	}
-
-	public function editReport($id){
-		$this->db->select('*');
-		$this->db->from('reports');
-		$this->db->where('id_reports',$id);
-    	$query =$this->db->get();
-    	return $query;
 	}
 
 	//End Reports

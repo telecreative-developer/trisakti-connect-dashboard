@@ -61,7 +61,7 @@
                 <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">import_contacts</i>News<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <?php include"header/menu-news.php";?>
+                        <?php include "header/menu-news.php";?>
                     </ul>
                 </div>
             </li>
@@ -70,7 +70,7 @@
                 <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">account_circle</i>Users<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <?php include"header/menu-faculty.php";?>    
+                        <?php include "header/menu-faculty.php";?>    
                     </ul>
                 </div>
             </li>
@@ -79,19 +79,18 @@
                 <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">insert_chart</i>Vote<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <?php include"header/menu-polls.php";?>      
+                        <?php include "header/menu-polls.php";?>      
                     </ul>
                 </div>
             </li>
-
             <li class="no-padding active">
-                <a class="collapsible-header waves-effect waves-grey active"><i class="material-icons">report</i>Report<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
+                <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">report</i>Report<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <?php include"header/menu-report.php";?>      
+                        <?php include "header/menu-report.php";?>      
                     </ul>
                 </div>
-            </li>
+            </li>  
             
         </ul>
         <!--<div class="footer">
@@ -113,26 +112,32 @@
                         <table id="example" class="display responsive-table datatable-example">
                             <thead>
                                 <tr>
-                                    <th width="5%">No</th>
-                                    <th width="20%">Name</th>
-                                    <th>Email</th>
-                                    <th>Show </th>
+                                    <th width="3%">No</th>
+                                    <th>Nim</th>
+                                    <th>Name</th>
+                                    <th>Faculty - Major </th>
+                                    <th width="50%">Subject - Content </th>
+                                    <th>Date Time </th>
+                                    <th width="5%">Action </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php 
                                     $no = 1;
                                     foreach ($reports as $rep) {
-                                      
+                                    $now = $rep->createdAt;
                                 ?>
                                 <tr>
-                                    <td><?php echo $no;?></td>
+                                    <td><center><?php echo $no;?></center></td>
+                                    <td><p span style="text-transform:lowercase; font-weight:normal;"><?php echo $rep->nim;?></p></td>
+                                    <td><p span style="text-transform:lowercase; font-weight:normal;"><?php echo $rep->fullname;?></p></td>
+                                    <td><p span style="text-transform:lowercase; font-weight:normal;"><?php echo $rep->faculty;?> - <?php echo $rep->major;?></p></td>
+                                    <td><p span style="text-transform:lowercase; font-weight:normal;"><b><?php echo $rep->subject;?></b><br/><?php echo $rep->content;?></p></td>
+                                    <td><p span style="text-transform:lowercase; font-weight:normal;"><?php echo substr($now,0,10);?></p></td>
                                     <td>
-                                        <?php echo $rep->name;?>
-                                    </td>
-                                    <td><?php echo $rep->email;?></td>
-                                    <td>
-                                        <a class="reply_reports" href="<?php echo base_url() . "reply_reports/" . $rep->id_reports; ?>" ><i class="material-icons">remove_red_eye</i></a>
+                                        <a onclick="javascript:return confirm('Delete ?')" href="<?php echo base_url() . "delpolls/" . $pols->id_poll; ?>">
+                                            <i class="material-icons left">close</i>
+                                        </a>
                                     </td>
                                 </tr>
                                 

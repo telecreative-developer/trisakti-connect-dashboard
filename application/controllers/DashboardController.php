@@ -121,9 +121,9 @@ class DashboardController extends CI_Controller {
 			'nim'  			=> $nim,
 			'name'  		=> $nama,
 			'email'  		=> $email,
+			'password'		=> '1',
 			'phone'  		=> $phone,
 			//'avatar'		=> $imageUrl."images/".$fileName,
-			'password'		=> '1',
 			'id_faculty'  	=> $id_faculty,
 			'id_major'  	=> $id_major,
 			'graduated'  	=> $graduated,
@@ -552,7 +552,7 @@ class DashboardController extends CI_Controller {
 	public function delpolls() {
         $id = $this->uri->segment(2);
         $this->ModelDashboard->delpolls($id);
-        redirect("polls");
+        //redirect("polls");
 	}
 
 	public function addpolls(){
@@ -578,9 +578,7 @@ class DashboardController extends CI_Controller {
 			'thumbnail_poll'		=> $imageUrl."images/".$fileName,
 			'content_poll'			=> $content
           );
-	//$dirpath = dirname(getcwd());
-	//var_dump($dirpath);
-     	$this->ModelDashboard->insert_titlepolls($polls); 
+        $this->ModelDashboard->insert_titlepolls($polls); 
         $this->session->set_flashdata('berhasil_pic', 'Berhasil Upload Foto');
         redirect('polls');
         
@@ -736,16 +734,17 @@ class DashboardController extends CI_Controller {
 		move_uploaded_file($tempFile, $targetFile);
  		
  		$id_poll = $this->input->post('id_poll');
-		$x = $fileName;
+		$x = substr($fileName, 10);
+
 		if($id_poll == NULL AND $x == ""){
 			$data = array(
 				'candidate' => $candidate
 			);
-
+			
 			$where = array(
 				'idpoll_choice' => $id
 			);
-			$this->ModelDashboard->updatedata_can($where,$data,'pollschoices');
+			$this->ModelDashboard->updatedata_can($where,$data,'polls_choice');
 		}
 		elseif($x == ""){
 			$data = array(
@@ -753,11 +752,11 @@ class DashboardController extends CI_Controller {
 				'id_poll' => $id_poll
 
 			);
-
+			
 			$where = array(
 				'idpoll_choice' => $id
 			);
-			$this->ModelDashboard->updatedata_can($where,$data,'pollschoices');
+			$this->ModelDashboard->updatedata_can($where,$data,'polls_choice');
 
 		}elseif($id_poll == NULL){
 			$data = array(
@@ -771,13 +770,12 @@ class DashboardController extends CI_Controller {
 				'idpoll_choice' => $id
 			);
 			$this->ModelDashboard->replaceCandidate($id);
-			$this->ModelDashboard->updatedata_can($where,$data,'pollschoices');
+			$this->ModelDashboard->updatedata_can($where,$data,'polls_choice');
 		}
-
+		
 		else{
 
 		}
-		//var_dump($x);
 		redirect("candidate");	
 	}
 
@@ -809,6 +807,27 @@ class DashboardController extends CI_Controller {
 		$this->load->view('back-end/reports',$rep);
 		$this->load->view('back-end/footer/datatables_footer');
 
+	}
+
+	public function registerusers()
+	{
+		$allusers['users'] 	= $this->ModelDashboard->Load_UsersVerify()->result();
+		$this->load->view('back-end/header/datatables_header');
+		$this->load->view('back-end/allusers',$allusers);
+		$this->load->view('back-end/footer/datatables_footer');
+	}
+
+	public function verifyUsers() {
+		$id = $this->uri->segment(2);
+		$data = array(
+			'verified' => '1'
+		);
+		$where = array(
+			'id' => $id
+		);
+		$this->ModelDashboard->updatedata_cat($where,$data,'users');
+		redirect("registerusers");
+		
 	}
 
 	// End Reports

@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '45.32.118.128',
-	'username' => 'rendi',
-	'password' => 'secretpassword',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
 	'database' => 'trisakti_connect',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

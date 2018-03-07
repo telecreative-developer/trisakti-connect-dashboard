@@ -111,16 +111,14 @@
                 </div>
             </li>
 
-            <div class="hidden" span style="display:none">
             <li class="no-padding">
                 <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">report</i>Report<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <?php include"header/menu-report.php";?>      
+                        <?php include "header/menu-report.php";?>      
                     </ul>
                 </div>
-            </li>
-            </div>
+            </li>  
         </ul>
         </div>
     </aside>
@@ -138,10 +136,10 @@
                         <table id="example" class="display responsive-table datatable-example">
                             <thead>
                                 <tr>
-                                    <th width="40">No</th>
+                                    <th width="4%">No</th>
                                     <th width="10%;">Picture</th>
-                                    <th width="30%">Title</th>
-                                    <th width="30%;">Content</th>
+                                    <th width="38%">Title</th>
+                                    <th width="38%;">Content</th>
                                     <th>Action </th>
                                 </tr>
                             </thead>
@@ -153,7 +151,7 @@
                                     $image = substr($render,10);
                                 ?>
                                 <tr>
-                                    <td><?php echo $no;?></td>
+                                    <td><center><?php echo $no;?></center></td>
                                     <td>
                                     
                                         <?php 
@@ -176,12 +174,11 @@
                                     <td>
 
                                         <a href="<?php echo base_url() . "edit_titlepolls/" . $pols->id_poll; ?>">
-                                            <button class="waves-effect light-blue darken-4 btn"><i class="material-icons left">edit</i>Edit </button> 
+                                            <i class="material-icons left">edit</i>
                                         </a>
 
                                         <a onclick="javascript:return confirm('Delete ?')" href="<?php echo base_url() . "delpolls/" . $pols->id_poll; ?>">
-                                            
-                                            <button class="waves-effect red lighten-1 btn"><i class="material-icons left">close</i>Delete </button> 
+                                            <i class="material-icons left">close</i>
                                         </a>
                                     </td>
                                 </tr>
