@@ -113,8 +113,8 @@
                             <thead>
                                 <tr>
                                     <th width="3%">No</th>
-                                    <th>Nim</th>
-                                    <th>Name</th>
+				    <th>Nim</th>
+			 	    <th>Name</th>
                                     <th>Faculty - Major </th>
                                     <th width="50%">Subject - Content </th>
                                     <th>Date Time </th>
