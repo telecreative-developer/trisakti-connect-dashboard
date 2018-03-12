@@ -582,9 +582,19 @@ Class ModelDashboard extends CI_Model{
 	}
 
 	public function delcareers($id){
-        $this->db->where('id_career', $id);
-        $this->db->delete('careers');
-    }
+			$this->db->where('id_career', $id);
+			$this->db->delete('careers');
+	}
+
+	public function delallnews($id){
+		$this->db->where('id_news', $id);
+		$this->db->delete('news');
+	}
+
+	public function delnews($id){
+		$this->db->where('id_news', $id);
+		$this->db->delete('news');
+	}
 
 	//End Careers
 
