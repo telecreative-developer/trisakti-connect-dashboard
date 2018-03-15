@@ -115,6 +115,7 @@
                                     <th width="3%">No</th>
                                     <th>Name</th>
                                     <th>Faculty - Major </th>
+                                    <th>Email</th>
                                     <th width="50%">Subject - Content </th>
                                     <th>Date Time </th>
                                     <th width="5%">Action </th>
@@ -128,10 +129,11 @@
                                 ?>
                                 <tr>
                                     <td><center><?php echo $no;?></center></td>
-                                    <td><p span style="text-transform:lowercase; font-weight:normal;"><?php echo $rep->fullname;?></p></td>
-                                    <td><p span style="text-transform:lowercase; font-weight:normal;"><?php echo $rep->faculty;?> - <?php echo $rep->major;?></p></td>
-                                    <td><p span style="text-transform:lowercase; font-weight:normal;"><b><?php echo $rep->subject;?></b><br/><?php echo $rep->content;?></p></td>
-                                    <td><p span style="text-transform:lowercase; font-weight:normal;"><?php echo substr($now,0,10);?></p></td>
+                                    <td><p span style="font-weight:normal;"><?php echo $rep->fullname;?></p></td>
+                                    <td><p span style="font-weight:normal;"><?php echo $rep->faculty;?> - <?php echo $rep->major;?></p></td>
+                                    <td><p span style="font-weight:normal;"><b><?php echo $rep->email;?></b></p></td>
+                                    <td><p span style="font-weight:normal;"><b><?php echo $rep->subject;?></b><br/><?php echo $rep->content;?></p></td>
+                                    <td><p span style="font-weight:normal;"><?php echo substr($now,0,10);?></p></td>
                                     <td>
                                         <a onclick="javascript:return confirm('Delete ?')" href="<?php echo base_url() . "delpolls/" . $pols->id_poll; ?>">
                                             <i class="material-icons left">close</i>

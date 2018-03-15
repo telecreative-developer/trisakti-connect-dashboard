@@ -138,11 +138,10 @@
                                   <th width='10%'>Nim</th>
                                   <th width='10%'>Name</th>
                                   <th width='15%'>Email</th>
-                                  <th width='10%'>Faculty</th>
-                                  <th width='10%'>Major</th>  
+                                  <th width='20%'>Faculty</th>
                                   <th width='3%'>Phone</th>
                                   <th width='10%'>Graduated</th>
-                                  <th width='20%'>Address</th>  
+                                  <th width='15%'>Address</th>  
                                   <th width='15%'>Verified</th>
                                   <th>Action</th>
                                 </tr>
@@ -158,14 +157,15 @@
                                     <td><?php echo $user->nim;?></td>
                                     <td><?php echo $user->name?></td>
                                     <td><?php echo $user->email;?></td>
-                                    
-                                    <td><?php echo $user->faculty;?></td>
-                                    <td><?php echo $user->major;?></td>
+                                    <td><?php echo $user->faculty;?> - <?php echo $user->major;?></td>
                                     <td><?php echo $user->phone;?></td>
                                     <td><?php echo $user->graduated;?></td>
                                     <td><?php echo $user->address;?></td>
                                     <td><span style="color:green">Menunggu Verifikasi</span></td>
                                     <td>
+                                        <a onclick="javascript:return confirm('Delete ?')" href="<?php echo base_url() . "deletealluser/" . $user->id; ?>">
+                                            <i class="material-icons left">close</i>
+                                        </a>
                                         <a href="<?php echo base_url();?>verifyusers/<?php echo $user->id;?>">
                                             <i class="material-icons left">check</i>
                                         </a>
