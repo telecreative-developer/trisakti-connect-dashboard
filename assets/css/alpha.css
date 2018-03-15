@@ -1807,7 +1807,6 @@ li.active .nav-drop-icon {
     font-weight: bold;
     display: block;
     margin-bottom: 20px;
-    text-transform: uppercase;
     color: rgba(0,0,0,0.54);
 }
 
