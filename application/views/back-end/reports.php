@@ -116,7 +116,7 @@
                                     <th>Name</th>
                                     <th>Faculty - Major </th>
                                     <th>Email</th>
-                                    <th width="50%">Subject - Content </th>
+                                    <th width="30%">Subject - Content </th>
                                     <th>Date Time </th>
                                     <th width="5%">Action </th>
                                 </tr>
