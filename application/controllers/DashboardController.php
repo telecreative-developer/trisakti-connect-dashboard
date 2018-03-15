@@ -88,9 +88,15 @@ class DashboardController extends CI_Controller {
 	}
 
 	public function deleteuser() {
-        $id = $this->uri->segment(2);
-        $this->ModelDashboard->deleteuser($id);
-        redirect("users");
+		$id = $this->uri->segment(2);
+		$this->ModelDashboard->deleteuser($id);
+		redirect("users");
+	}
+
+	public function deletealluser() {
+		$id = $this->uri->segment(2);
+		$this->ModelDashboard->deleteuser($id);
+		redirect("registerusers");
 	}
 
 	public function listuser(){

@@ -528,6 +528,8 @@ Class ModelDashboard extends CI_Model{
 	public function Load_Report(){
 		$this->db->select('*');
 		$this->db->from('reports');
+		$this->db->join('faculties','faculties.id_faculty = reports.id_faculty');
+		$this->db->join('majors','majors.id_major = reports.id_major');
 		$this->db->order_by('id_report','desc');
 		$db = $this->db->get();
 		return $db;
