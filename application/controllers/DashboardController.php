@@ -265,6 +265,18 @@ class DashboardController extends CI_Controller {
         redirect("categories");
 	}
 
+	public function delallnews() {
+		$id = $this->uri->segment(2);
+		$this->ModelDashboard->delallnews($id);
+		redirect("allnews");
+	}
+
+	public function delnews() {
+		$id = $this->uri->segment(2);
+		$this->ModelDashboard->delnews($id);
+		redirect("pending");
+	}
+
 	//End Categories Admin //
 
 

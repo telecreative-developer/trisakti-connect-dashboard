@@ -100,7 +100,8 @@ $route['uppolls'] = 'DashboardController/uppolls';
 $route['delpolls/:any'] = 'DashboardController/delpolls';
 $route['insert_titlepolls'] = 'DashboardController/insert_titlepolls';
 
-
+$route['delallnews/:any'] = 'DashboardController/delallnews';
+$route['delnews/:any'] = 'DashboardController/delnews';
 
 $route['candidate'] = 'DashboardController/candidate';
 $route['addcandidate'] = 'DashboardController/addcandidate';

@@ -201,10 +201,13 @@
                                         
                                         if ($status == 'Pending') {   
                                         ?>
+
+                                        <a onclick="javascript:return confirm('Delete ?')" href="<?php echo base_url() . "delallnews/" . $new->id_news; ?>">
+                                            <i class="material-icons left">close</i>
+                                        </a>
+
                                         <a onclick="javascript:return confirm('Agree ?')" href="<?php echo base_url() . "editnews/" . $new->id_news; ?>">
-                                            <button class="waves-effect light-blue darken-4 btn">
-                                                <i class="material-icons">check</i>
-                                            </button> 
+                                            <i class="material-icons">check</i>
                                         </a>
 
                                         <?php

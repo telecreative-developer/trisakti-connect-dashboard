@@ -147,7 +147,7 @@
                             <?php 
 
                             foreach ($pending as $new) {
-                              
+                            $no = 1;
                             ?>
 
                             <tbody>
@@ -182,10 +182,15 @@
                                     
                                     if ($status == 'Pending') {   
                                     ?>
-                                    <a onclick="javascript:return confirm('Agree ?')" href="<?php echo base_url() . "pendingnews/" . $new->id_news; ?>">
-                                        <button class="waves-effect light-blue darken-4 btn"><i class="material-icons">check</i> </button> 
+
+                                    <a onclick="javascript:return confirm('Delete ?')" href="<?php echo base_url() . "delnews/" . $new->id_news; ?>">
+                                        <i class="material-icons left">close</i>
                                     </a>
 
+                                    <a onclick="javascript:return confirm('Agree ?')" href="<?php echo base_url() . "pendingnews/" . $new->id_news; ?>">
+                                        <i class="material-icons">check</i>
+                                    </a>
+                                    
                                     <?php
                                         }
                                     ?>

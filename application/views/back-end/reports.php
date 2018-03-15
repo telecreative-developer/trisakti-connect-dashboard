@@ -113,7 +113,6 @@
                             <thead>
                                 <tr>
                                     <th width="3%">No</th>
-				    <th>Nim</th>
 			 	    <th>Name</th>
                                     <th>Faculty - Major </th>
                                     <th width="50%">Subject - Content </th>
@@ -129,7 +128,6 @@
                                 ?>
                                 <tr>
                                     <td><center><?php echo $no;?></center></td>
-                                    <td><p span style="text-transform:lowercase; font-weight:normal;"><?php echo $rep->nim;?></p></td>
                                     <td><p span style="text-transform:lowercase; font-weight:normal;"><?php echo $rep->fullname;?></p></td>
                                     <td><p span style="text-transform:lowercase; font-weight:normal;"><?php echo $rep->faculty;?> - <?php echo $rep->major;?></p></td>
                                     <td><p span style="text-transform:lowercase; font-weight:normal;"><b><?php echo $rep->subject;?></b><br/><?php echo $rep->content;?></p></td>
