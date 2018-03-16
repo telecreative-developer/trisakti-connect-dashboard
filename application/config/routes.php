@@ -121,6 +121,7 @@ $route['insertusers'] = 'DashboardController/insertusers';
 $route['deleteuser/:any'] = 'DashboardController/deleteuser';
 $route['edituser/:any'] = 'DashboardController/edituser';
 $route['updateuser'] = 'DashboardController/updateuser';
+$route['deletealluser/:any'] = 'DashboardController/deletealluser';
 
 // End Backend
 
