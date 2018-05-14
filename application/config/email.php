@@ -22,4 +22,3 @@ $config['mailtype']="html";
 
 /* End of file email.php */
 /* Location: ./system/application/config/email.php */
-

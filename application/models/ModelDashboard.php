@@ -370,7 +370,7 @@ Class ModelDashboard extends CI_Model{
 	}
 
 	public function delpolls($id){
-        $this->db->where('id_poll',$id);
+		$this->db->where('id_poll',$id);
 		$query = $this->db->get('polls');
 		$row = $query->row();
 		$x = substr($row->thumbnail_poll,46);
@@ -597,6 +597,17 @@ Class ModelDashboard extends CI_Model{
 		$this->db->where('id_news', $id);
 		$this->db->delete('news');
 	}
+
+	public function loadQuery($orderid,$table){
+    $this->db->order_by($orderid, 'desc');
+		$db = $this->db->get($table);
+		return $db;
+	}
+	
+	public function deleteQuery($idwhere,$id,$table){
+    $this->db->where($idwhere, $id);
+    $this->db->delete($table);
+  }
 
 	//End Careers
 

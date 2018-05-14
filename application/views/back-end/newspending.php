@@ -116,6 +116,14 @@
                     </ul>
                 </div>
             </li>  
+            <li class="no-padding">
+                <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">add_shopping_cart</i>E-commerce<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
+                <div class="collapsible-body">
+                    <ul>
+                        <?php include "header/menu-ecommerce.php";?>      
+                    </ul>
+                </div>
+            </li>           
         </ul>
         </div>
     </aside>

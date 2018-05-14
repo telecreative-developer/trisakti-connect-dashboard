@@ -123,6 +123,9 @@ $route['edituser/:any'] = 'DashboardController/edituser';
 $route['updateuser'] = 'DashboardController/updateuser';
 $route['deletealluser/:any'] = 'DashboardController/deletealluser';
 
+$route['shops'] = 'DashboardController/shops';
+$route['approve_item/:any'] = 'DashboardController/approve_item';
+
 // End Backend
 
 

@@ -91,13 +91,16 @@
                     </ul>
                 </div>
             </li>  
-            
+            <li class="no-padding">
+                <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">add_shopping_cart</i>E-commerce<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
+                <div class="collapsible-body">
+                    <ul>
+                        <?php include "header/menu-ecommerce.php";?>      
+                    </ul>
+                </div>
+            </li>               
         </ul>
-        <!--<div class="footer">
-            <br>
-            <a href="#!">Telecreative </a>
-        </div>
-        !-->
+        
         </div>
     </aside>
     <main class="mn-inner inner-active-sidebar">
@@ -113,11 +116,10 @@
                             <thead>
                                 <tr>
                                     <th width="3%">No</th>
-			 	    <th>Name</th>
+                                    <th>Name</th>
                                     <th>Faculty - Major </th>
                                     <th>Email</th>
                                     <th width="30%">Subject - Content </th>
-                                    <th>Date Time </th>
                                     <th width="5%">Action </th>
                                 </tr>
                             </thead>
@@ -133,9 +135,8 @@
                                     <td><p span style="font-weight:normal;"><?php echo $rep->faculty;?> - <?php echo $rep->major;?></p></td>
                                     <td><p span style="font-weight:normal;"><b><?php echo $rep->email;?></b></p></td>
                                     <td><p span style="font-weight:normal;"><b><?php echo $rep->subject;?></b><br/><?php echo $rep->content;?></p></td>
-                                    <td><p span style="font-weight:normal;"><?php echo substr($now,0,10);?></p></td>
                                     <td>
-                                        <a onclick="javascript:return confirm('Delete ?')" href="<?php echo base_url() . "delpolls/" . $pols->id_poll; ?>">
+                                        <a onclick="javascript:return confirm('Delete ?')" href="<?php echo base_url()?>delpolls/<?php echo $rep->id_report;?>">
                                             <i class="material-icons left">close</i>
                                         </a>
                                     </td>
