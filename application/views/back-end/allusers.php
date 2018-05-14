@@ -140,7 +140,7 @@
                                   <th width='15%'>Email</th>
                                   <th width='20%'>Faculty</th>
                                   <th width='3%'>Phone</th>
-                                  <th width='10%'>Graduated</th>
+                                  <th width='10%'>Batch</th>
                                   <th width='15%'>Address</th>  
                                   <th width='15%'>Verified</th>
                                   <th>Action</th>
